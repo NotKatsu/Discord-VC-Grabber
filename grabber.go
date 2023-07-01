@@ -7,12 +7,17 @@ import (
 )
 
 func main() {
-	var discordUserID string
+	for {
+		var discordUserID string
+		var authenticationToken string
 
-	fmt.Printf("Discord User ID: ")
-	fmt.Scanln(&discordUserID)
+		fmt.Printf("Discord User ID: ")
+		fmt.Scanln(&discordUserID)
 
-	result := modules.Encode(string(discordUserID))
+		encoded_discord_id := modules.Encode(string(discordUserID))
+		new_encoded_discord_id := encoded_discord_id[:len(encoded_discord_id)-2]
 
-	fmt.Println(result)
+		authenticationToken += new_encoded_discord_id + "."
+		fmt.Println(authenticationToken)
+	}
 }
