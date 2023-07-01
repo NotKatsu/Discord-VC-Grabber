@@ -7,5 +7,11 @@ func encode(text_to_encode string) string {
 }
 
 func decode(text_to_decode string) string {
+	decoded_string, err := base64.StdEncoding.DecodeString(text_to_decode)
 
+	if err == nil {
+		return text_to_decode
+	} else {
+		return string(decoded_string)
+	}
 }
